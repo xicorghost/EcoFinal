@@ -3,7 +3,6 @@ package com.example.Proveedor.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,16 +13,13 @@ public class Proveedor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idP;
 
-
     @Column(nullable = false)
     private String nombre;
-
 
     @Column(nullable = false)
     private String correo;
    
     private String telefono;
-
 
 }
 
