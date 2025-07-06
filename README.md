@@ -139,11 +139,11 @@ lol
   }
 
   - Actualizar proveedor
-    PUT http://localhost:8080/productos/{idP}
+    PUT http://localhost:8080/proveedores/{idP}
 
 
   - Eliminar proveedor
-    DELETE http://localhost:8080/productos/{idP}
+    DELETE http://localhost:8080/proveedores/{idP}
 
 ### Productos
 - Obtener todos los productos
@@ -201,15 +201,18 @@ lol
   - Eliminar producto
     DELETE http://localhost:8080/productos/{id}
   ### 4. ADVERTENCIA
-  -El dia jueves 26 descubri cual fue el problema, y era esque no aprete el f5,
-  pero despues en los puertos por alguna razon lo deje en localhost:3306 pero no
-  funcionaba las peticiones en el postman pero despues las puse con localhost:8080
-  pero seguia estando en 3306 pero todo funcionaba bien asi que lo deje asi xd.
+  -si no funciona localhost:8080 al ejecutar el sever/programa en 
+    aplication.properties cambia a localhost:3306 pero despues en 
+    postman las peticiones deben ser localhost:8080.
 
 
   ### 5. Cómo probar los endpoints en Postman
   -Crear una nueva petición.
+
   -Elegir el método HTTP (GET, POST, PUT, DELETE).
+
   -Escribir la URL correspondiente.
+
   -Para POST y PUT, ir a la pestaña Body, seleccionar raw y JSON, y pegar uno de los ejemplos JSON.
+
   -Hacer clic en Send y revisar la respuesta.
