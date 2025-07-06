@@ -6,6 +6,45 @@ lol
 
 ## 2. Endpoints para pruebas (Postman o navegador)
 
+### 2.1 Swagger
+
+- Pasos para acceder a Swagger UI:
+  - Ejecuta tu aplicación Spring Boot
+
+   mvn spring-boot:run
+   
+  O desde tu IDE ejecutando la clase principal con @SpringBootApplication
+- Accede a Swagger UI en tu navegador
+- Una vez que la aplicación esté corriendo, ve a:
+
+  http://localhost:8080/swagger-ui/index.html
+
+- URLs alternativas (por si la primera no funciona):
+
+  http://localhost:8080/swagger-ui.html
+
+  http://localhost:8080/swagger-ui/
+
+- Para ver la documentación en formato JSON:
+
+  http://localhost:8080/v3/api-docs
+
+- ¿Qué verás?
+  Una vez que accedas, verás una interfaz web similar a la de tu imagen donde podrás:
+  Ver todos tus endpoints organizados por controladores.
+
+  Probar directamente los endpoints desde la interfaz.
+
+  Ver la documentación automática de tus APIs.
+
+  Explorar los modelos de datos (entidades).
+
+- Si no funciona, verifica:
+  Puerto: Asegúrate de que tu app corre en el puerto 8080 (o cambia el puerto en la URL).
+
+  Consola: Revisa que no haya errores al iniciar la aplicación.
+
+  Dependencia: Confirma que tienes springdoc-openapi-starter-webmvc-ui en tu pom.xml (ya la tienes).
 
 
 ### 2.2 EMAIL SERVICE EN LA CARPETA PROVEEDOR
@@ -48,15 +87,23 @@ lol
 
 - Lo que se guarda en la base de datos:
 
-  ID de la notificación
-  ID del proveedor relacionado
-  Tipo de notificación (GERENTE o PROVEEDOR)
-  Destinatario del correo
-  Asunto del correo
-  Mensaje completo
-  Fecha y hora de envío
-  Estado (ENVIADO)
-  Nombre del proveedor (para consultas rápidas)
+  ID de la notificación.
+
+  ID del proveedor relacionado.
+
+  Tipo de notificación (GERENTE o PROVEEDOR).
+
+  Destinatario del correo.
+
+  Asunto del correo.
+
+  Mensaje completo.
+
+  Fecha y hora de envío.
+
+  Estado (ENVIADO).
+
+  Nombre del proveedor (para consultas rápidas).
 
 ### Productos
 
