@@ -11,9 +11,9 @@ lol
 - Pasos para acceder a Swagger UI:
   - Ejecuta tu aplicación Spring Boot
 
-   mvn spring-boot:run
-   
-  O desde tu IDE ejecutando la clase principal con @SpringBootApplication
+    mvn spring-boot:run
+
+  -O desde tu IDE ejecutando la clase principal con @SpringBootApplication
 - Accede a Swagger UI en tu navegador
 - Una vez que la aplicación esté corriendo, ve a:
 
@@ -105,25 +105,57 @@ lol
 
   Nombre del proveedor (para consultas rápidas).
 
+### Proveedor 
+- Obtener todos los prooveedores
+  GET http://localhost:8080/proveedores
+
+- Obtener proveedor por id
+  GET http://localhost:8080/proveedores/{idP}
+
+- Crear proveedores
+  POST http://localhost:8080/proveedores
+
+  Ejemplos para crear proveedores (POST):
+
+{
+    "idP": 1,
+    "nombre": "Ana García",
+    "correo": "ana.garcia@example.com",
+    "telefono": "987-654-3210"
+  }
+
+  {
+    "idP": 2,
+    "nombre": "Juan Pérez",
+    "correo": "juan.perez@example.com",
+    "telefono": "123-456-7890"
+  }
+
+  {
+    "idP": 3,
+    "nombre": "María López",
+    "correo": "maria.lopez@example.com",
+    "telefono": "555-123-4567"
+  }
+
+  - Actualizar proveedor
+    PUT http://localhost:8080/productos/{idP}
+
+
+  - Eliminar proveedor
+    DELETE http://localhost:8080/productos/{idP}
+
 ### Productos
-
-
-
-
 - Obtener todos los productos
   GET http://localhost:8080/productos
-
 
 
 - Obtener producto por id
   GET http://localhost:8080/productos/{id}
 
 
-
 - Crear productos
   POST http://localhost:8080/productos
-  Content-Type: application/json
-
 
   Ejemplos para crear productos (POST):
 
@@ -135,7 +167,6 @@ lol
   "precio": 999.99,
   "categoria": "Electrónica"
 }
-
 
 {
     "id": 2,
@@ -163,23 +194,6 @@ lol
     "categoria": "Hogar"
   },
 
-
-  {
-    "id": 5,
-    "nombre": "Teclado mecánico",
-    "stock": 10,
-    "precio": 89.95,
-    "categoria": "Informática"
-  },
-
-
-  {
-    "id": 6,
-    "nombre": "Auriculares inalámbricos",
-    "stock": 25,
-    "precio": 129.00,
-    "categoria": "Audio"
-  }
   - Actualizar producto
     PUT http://localhost:8080/productos/{id}
 
@@ -191,7 +205,6 @@ lol
   pero despues en los puertos por alguna razon lo deje en localhost:3306 pero no
   funcionaba las peticiones en el postman pero despues las puse con localhost:8080
   pero seguia estando en 3306 pero todo funcionaba bien asi que lo deje asi xd.
-
 
 
   ### 5. Cómo probar los endpoints en Postman
