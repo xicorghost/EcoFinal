@@ -1,5 +1,4 @@
 package com.example.EcoFinal.Producto.Controller;
-//src/test/java/com/example/Producto/Controller/ProductoControllerTest.java
 
 import com.example.Producto.Model.Producto;
 import com.example.Producto.Service.ProductoService;
@@ -13,15 +12,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-
 import java.util.Arrays;
 import java.util.Optional;
-
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 
 @WebMvcTest(ProductoController.class)
 class ProductoControllerTest {
@@ -37,7 +33,7 @@ class ProductoControllerTest {
 
     /* Test de obtener todos los productos */
     @Test
-    void testObtenerTodos() throws Exception {
+    void testGetAll() throws Exception {
         Producto p1 = new Producto(1L, "Shampoo ecológico", 50, 3990.0, "Higiene");
         Producto p2 = new Producto(2L, "Teclado mecánico", 10, 8990.0, "Informática");
 
@@ -54,7 +50,7 @@ class ProductoControllerTest {
 
     /* Test de crear un producto */
     @Test
-    void testCrearProducto() throws Exception {
+    void testSave() throws Exception {
         Producto nuevo = new Producto(null, "Shampoo ecológico", 50, 3990.0, "Higiene");
         Producto guardado = new Producto(1L, "Shampoo ecológico", 50, 3990.0, "Higiene");
 
@@ -73,12 +69,10 @@ class ProductoControllerTest {
 
     /* Test de obtener un producto por ID */
     @Test
-    void testObtenerProductoPorId() throws Exception {
+    void testObtenerPorId() throws Exception {
         Producto producto = new Producto(1L, "Shampoo ecológico", 50, 3990.0, "Higiene");
 
-
         when(productoService.obtenerProductoPorId(1L)).thenReturn(Optional.of(producto));
-
 
         mockMvc.perform(get("/productos/1"))
                 .andExpect(status().isOk())
@@ -91,12 +85,10 @@ class ProductoControllerTest {
 
     /* Test de actualizar producto por ID */
     @Test
-    void testActualizarProducto() throws Exception {
+    void testActualizar() throws Exception {
         Producto actualizado = new Producto(1L, "Shampoo nuevo", 60, 4590.0, "Higiene");
 
-
         when(productoService.actualizarProducto(eq(1L), any(Producto.class))).thenReturn(actualizado);
-
 
         mockMvc.perform(put("/productos/1")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -111,14 +103,35 @@ class ProductoControllerTest {
 
     /* Test de eliminar producto por ID */
     @Test
-    void testEliminarProducto() throws Exception {
+    void testEliminar() throws Exception {
         doNothing().when(productoService).eliminarProducto(1L);
-
 
         mockMvc.perform(delete("/productos/1"))
                 .andExpect(status().isNoContent());
 
-
         verify(productoService).eliminarProducto(1L);
+    }
+
+    /* Test de obtener producto por ID - No encontrado */
+    @Test
+    void testObtenerPorIdNoEncontrado() throws Exception {
+        when(productoService.obtenerProductoPorId(999L)).thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/productos/999"))
+                .andExpect(status().isNotFound());
+    }
+
+    /* Test de actualizar producto - No encontrado */
+    @Test
+    void testActualizarNoEncontrado() throws Exception {
+        Producto producto = new Producto(1L, "Producto", 10, 1000.0, "Categoria");
+
+        when(productoService.actualizarProducto(eq(999L), any(Producto.class)))
+                .thenThrow(new RuntimeException("Producto no encontrado"));
+
+        mockMvc.perform(put("/productos/999")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(producto)))
+                .andExpect(status().isNotFound());
     }
 }

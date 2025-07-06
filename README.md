@@ -8,7 +8,7 @@ lol
 
 
 
-## 2.2 EMAIL SERVICE EN LA CARPETA PROVEEDOR
+### 2.2 EMAIL SERVICE EN LA CARPETA PROVEEDOR
 
 - OJO DEBE DE EXISTIR UN PROVEEDOR 
  Y tambien hice un servicio de notificacion
@@ -17,18 +17,23 @@ lol
   Para enviar notificaciones (POST):
 
   POST /proveedores/notificar/{idP} - Notifica al gerente
+
   POST /proveedores/notificar-proveedor/{idP} - Notifica al proveedor
 
--Para consultar historial (GET):
+- Para consultar historial (GET):
 
   GET /proveedores/notificaciones - Ver todas las notificaciones
+
   GET /proveedores/{idP}/notificaciones - Ver notificaciones de un proveedor específico
+
   GET /proveedores/notificaciones/tipo/GERENTE - Ver solo notificaciones al gerente
+
   GET /proveedores/notificaciones/tipo/PROVEEDOR - Ver solo notificaciones a proveedores
+
   GET /proveedores/notificaciones/recientes - Ver las últimas 10 notificaciones
 
--Ejemplo de flujo:
-  -Enviar notificación:
+- Ejemplo de flujo:
+  - Enviar notificación:
     POST http://localhost:8080/proveedores/notificar/1
     {
         "mensaje": "Problema con entrega"
@@ -37,10 +42,11 @@ lol
   - Ver todas las notificaciones:
     GET http://localhost:8080/proveedores/notificaciones
 
-  -Ver notificaciones de un proveedor:
+
+  - Ver notificaciones de un proveedor:
     GET http://localhost:8080/proveedores/1/notificaciones
 
--Lo que se guarda en la base de datos:
+- Lo que se guarda en la base de datos:
 
   ID de la notificación
   ID del proveedor relacionado
