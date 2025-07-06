@@ -1,4 +1,4 @@
-package com.example.EcoFinal.ProductoTest.Service;
+package com.example.EcoFinal.Producto.Service;
 
 import com.example.Producto.Model.Producto;
 import com.example.Producto.Repository.ProductoRepository;
