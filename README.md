@@ -1,12 +1,15 @@
 ## 1. Creación del proyecto con Spring Initializr
 
 
-lol
+### 2. ADVERTENCIA
+-si no funciona localhost:8080 al ejecutar el sever/programa en 
+  aplication.properties cambia a localhost:3306 pero despues en 
+  postman las peticiones deben ser localhost:8080.
 
 
-## 2. Endpoints para pruebas (Postman o navegador)
+## 3. Endpoints para pruebas (Postman o navegador)
 
-### 2.1 Swagger
+### 3.1 Swagger
 
 - Pasos para acceder a Swagger UI:
   - Ejecuta tu aplicación Spring Boot
@@ -47,10 +50,131 @@ lol
   Dependencia: Confirma que tienes springdoc-openapi-starter-webmvc-ui en tu pom.xml (ya la tienes).
 
 
-### 2.2 EMAIL SERVICE EN LA CARPETA PROVEEDOR
+### 3.2 Servico de notificacion EN LA CARPETA PROVEEDOR
 
 - OJO DEBE DE EXISTIR UN PROVEEDOR 
  Y tambien hice un servicio de notificacion
+
+- Consultas Postman para API Proveedores
+  CRUD PROVEEDORES
+
+- 1.Obtener todos los proveedores
+
+  GET http://localhost:8081/proveedores
+
+  Método: GET
+
+  Headers: Content-Type: application/json
+
+  Body: Ninguno
+
+- 2.Crear nuevo proveedor
+
+  POST http://localhost:8081/proveedores
+
+  Método: POST
+
+  Headers: Content-Type: application/json
+
+  Body (JSON):
+
+  json
+  {
+      "nombre": "Proveedor ABC",
+      "correo": "proveedor@abc.com",
+      "telefono": "+56912345678"
+  }
+
+- 3.Obtener proveedor por ID
+
+  GET http://localhost:8081/proveedores/1
+
+  Método: GET
+
+  Headers: Content-Type: application/json
+
+  Body: Ninguno
+
+  Nota: Cambiar 1 por el ID del proveedor que quieras consultar
+
+4. Actualizar proveedor
+
+  PUT http://localhost:8081/proveedores/1
+
+  Método: PUT
+
+  Headers: Content-Type: application/json
+
+  Body (JSON):
+
+  json
+  {
+      "nombre": "Proveedor ABC Actualizado",
+      "correo": "nuevo@abc.com",
+      "telefono": "+56987654321"
+  }
+  Nota: Cambiar 1 por el ID del proveedor que quieras actualizar
+
+- 5.Eliminar proveedor
+
+  DELETE http://localhost:8080/proveedores/1
+
+  Método: DELETE
+
+  Headers: Content-Type: application/json
+
+  Body: Ninguno
+
+  Nota: Cambiar 1 por el ID del proveedor que quieras eliminar
+
+### 3.3 NOTIFICACIONES
+
+
+- 1.Notificar al gerente
+
+  POST http://localhost:8081/proveedores/notificar/1
+
+  Método: POST
+
+  Headers: Content-Type: application/json
+
+  Body (JSON):
+
+  json
+  {
+      "mensaje": "El proveedor necesita atención urgente. Revisar inventario."
+  }
+
+  Nota: Cambiar 1 por el ID del proveedor
+
+- 2.Notificar al proveedor
+
+  POST http://localhost:8081/proveedores/notificar-proveedor/1
+
+  Método: POST
+
+  Headers: Content-Type: application/json
+
+  Body (JSON):
+
+  json
+  {
+      "mensaje": "Su pedido ha sido procesado. Favor confirmar recepción."
+  }
+
+  Nota: Cambiar 1 por el ID del proveedor
+
+## 4. HISTORIAL DE NOTIFICACIONES
+
+- 1.Obtener todas las notificaciones
+
+  GET http://localhost:8080/proveedores/notificaciones
+
+  Método: GET
+
+  Headers: Content-Type: application/json
+
+  Body: Ninguno
 
 
 
@@ -149,13 +273,9 @@ lol
 
   - Eliminar producto
     DELETE http://localhost:8080/productos/{id}
-  ### 4. ADVERTENCIA
-  -si no funciona localhost:8080 al ejecutar el sever/programa en 
-    aplication.properties cambia a localhost:3306 pero despues en 
-    postman las peticiones deben ser localhost:8080.
 
 
-  ### 5. Cómo probar los endpoints en Postman
+  ### 6. Cómo probar los endpoints en Postman
   -Crear una nueva petición.
 
   -Elegir el método HTTP (GET, POST, PUT, DELETE).
