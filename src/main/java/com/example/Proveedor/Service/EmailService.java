@@ -1,6 +1,6 @@
 package com.example.Proveedor.Service;
 
-/*no funciona solo prueba */
+/*Esto es lo que sale en consola cuando el email se envio*/
 import org.springframework.stereotype.Service;
 
 @Service
