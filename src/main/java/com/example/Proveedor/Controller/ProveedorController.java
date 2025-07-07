@@ -1,6 +1,5 @@
 package com.example.Proveedor.Controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,6 @@ public class ProveedorController {
     @Autowired
     private ProveedorService proveedorService;
 
-     
     @Autowired
     private NotificacionService notificacionService;
 
@@ -93,6 +91,40 @@ public class ProveedorController {
     @GetMapping("/notificaciones")
     public List<Notificacion> obtenerTodasLasNotificaciones() {
         return notificacionService.obtenerTodasLasNotificaciones();
+    }
+    
+    /*
+     Crear una notificación directamente
+     POST /proveedores/notificaciones
+     Body: { "proveedorId": 1, "tipoNotificacion": "GERENTE", "mensaje": "Texto del mensaje", "destinatario": "email@ejemplo.com" }
+     */
+    @PostMapping("/notificaciones")
+    public ResponseEntity<Notificacion> crearNotificacion(@RequestBody Notificacion notificacion) {
+        try {
+            // Validaciones básicas
+            if (notificacion.getMensaje() == null || notificacion.getMensaje().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body(null);
+            }
+            
+            if (notificacion.getTipoNotificacion() == null || notificacion.getTipoNotificacion().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body(null);
+            }
+            
+            // Validar que el tipo sea válido
+            String tipo = notificacion.getTipoNotificacion().toUpperCase();
+            if (!tipo.equals("GERENTE") && !tipo.equals("PROVEEDOR")) {
+                return ResponseEntity.badRequest().body(null);
+            }
+            
+            notificacion.setTipoNotificacion(tipo);
+            
+            // Guardar la notificación
+            Notificacion notificacionGuardada = notificacionService.guardarNotificacion(notificacion);
+            return ResponseEntity.ok(notificacionGuardada);
+            
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
     }
     
     /*
