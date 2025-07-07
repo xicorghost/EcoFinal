@@ -1,6 +1,6 @@
 package com.example.Proveedor.Service;
 
-
+/*no funciona solo prueba */
 import org.springframework.stereotype.Service;
 
 @Service
