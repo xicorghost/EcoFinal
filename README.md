@@ -20,18 +20,18 @@
 - Accede a Swagger UI en tu navegador
 - Una vez que la aplicación esté corriendo, ve a:
 
-  http://localhost:8080/swagger-ui/index.html
+  http://localhost:8081/swagger-ui/index.html
 
 - URLs alternativas (por si la primera no funciona):
 
-  http://localhost:8080/swagger-ui.html
+  http://localhost:8081/swagger-ui.html
 
-  http://localhost:8080/swagger-ui/
+  http://localhost:8081/swagger-ui/
 
 - Para ver la documentación en formato JSON:
 
-  http://localhost:8080/v3/api-docs
-
+  http://localhost:8081/api-docs
+  
 - ¿Qué verás?
   Una vez que accedas, verás una interfaz web similar a la de tu imagen donde podrás:
   Ver todos tus endpoints organizados por controladores.
