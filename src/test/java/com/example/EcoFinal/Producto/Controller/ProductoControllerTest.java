@@ -36,8 +36,20 @@ class ProductoControllerTest {
     /* Test de obtener todos los productos */
     @Test
     void testGetAll() throws Exception {
-        Producto p1 = new Producto(1L, "Shampoo ecológico", 50, 3990.0, "Higiene");
-        Producto p2 = new Producto(2L, "Teclado mecánico", 10, 8990.0, "Informática");
+        // Usar el constructor correcto de Lombok
+        Producto p1 = new Producto();
+        p1.setId(1L);
+        p1.setNombre("Shampoo ecológico");
+        p1.setStock(50);
+        p1.setPrecio(3990.0);
+        p1.setCategoria("Higiene");
+
+        Producto p2 = new Producto();
+        p2.setId(2L);
+        p2.setNombre("Teclado mecánico");
+        p2.setStock(10);
+        p2.setPrecio(8990.0);
+        p2.setCategoria("Informática");
 
         when(productoService.listarProductos()).thenReturn(Arrays.asList(p1, p2));
 
@@ -53,8 +65,20 @@ class ProductoControllerTest {
     /* Test de crear un producto */
     @Test
     void testSave() throws Exception {
-        Producto nuevo = new Producto(null, "Shampoo ecológico", 50, 3990.0, "Higiene");
-        Producto guardado = new Producto(1L, "Shampoo ecológico", 50, 3990.0, "Higiene");
+        // Producto a enviar (sin ID)
+        Producto nuevo = new Producto();
+        nuevo.setNombre("Shampoo ecológico");
+        nuevo.setStock(50);
+        nuevo.setPrecio(3990.0);
+        nuevo.setCategoria("Higiene");
+
+        // Producto que devuelve el servicio (con ID)
+        Producto guardado = new Producto();
+        guardado.setId(1L);
+        guardado.setNombre("Shampoo ecológico");
+        guardado.setStock(50);
+        guardado.setPrecio(3990.0);
+        guardado.setCategoria("Higiene");
 
         when(productoService.guardarProducto(any(Producto.class))).thenReturn(guardado);
 
@@ -72,7 +96,12 @@ class ProductoControllerTest {
     /* Test de obtener un producto por ID */
     @Test
     void testObtenerPorId() throws Exception {
-        Producto producto = new Producto(1L, "Shampoo ecológico", 50, 3990.0, "Higiene");
+        Producto producto = new Producto();
+        producto.setId(1L);
+        producto.setNombre("Shampoo ecológico");
+        producto.setStock(50);
+        producto.setPrecio(3990.0);
+        producto.setCategoria("Higiene");
 
         when(productoService.obtenerProductoPorId(1L)).thenReturn(Optional.of(producto));
 
@@ -88,7 +117,12 @@ class ProductoControllerTest {
     /* Test de actualizar producto por ID */
     @Test
     void testActualizar() throws Exception {
-        Producto actualizado = new Producto(1L, "Shampoo nuevo", 60, 4590.0, "Higiene");
+        Producto actualizado = new Producto();
+        actualizado.setId(1L);
+        actualizado.setNombre("Shampoo nuevo");
+        actualizado.setStock(60);
+        actualizado.setPrecio(4590.0);
+        actualizado.setCategoria("Higiene");
 
         when(productoService.actualizarProducto(eq(1L), any(Producto.class))).thenReturn(actualizado);
 
@@ -126,7 +160,12 @@ class ProductoControllerTest {
     /* Test de actualizar producto - No encontrado */
     @Test
     void testActualizarNoEncontrado() throws Exception {
-        Producto producto = new Producto(1L, "Producto", 10, 1000.0, "Categoria");
+        Producto producto = new Producto();
+        producto.setId(1L);
+        producto.setNombre("Producto");
+        producto.setStock(10);
+        producto.setPrecio(1000.0);
+        producto.setCategoria("Categoria");
 
         when(productoService.actualizarProducto(eq(999L), any(Producto.class)))
                 .thenThrow(new RuntimeException("Producto no encontrado"));

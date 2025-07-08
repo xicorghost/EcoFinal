@@ -1,13 +1,12 @@
 package com.example.Proveedor.Service;
 
-/*Esto es lo que sale en consola cuando el email se envio*/
+/*Esto es lo que sale en consola cuando la notificacion se envio*/
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmailService {
     
-    /*
-     Simula el envío de un correo electrónico
+    /*Simula el envío de un correo electrónico.
      Solo imprime en consola ya que no hay integración real con servicio de email
      */
     public void enviarCorreo(String destinatario, String asunto, String cuerpo) {
