@@ -234,7 +234,6 @@
 
 
 {
-  "id": 1,
   "nombre": "Laptop",
   "stock": 15,
   "precio": 999.99,
@@ -242,7 +241,6 @@
 }
 
 {
-    "id": 2,
     "nombre": "Smartphone",
     "stock": 30,
     "precio": 499.99,
@@ -251,7 +249,6 @@
 
 
   {
-    "id": 3,
     "nombre": "Silla de oficina",
     "stock": 20,
     "precio": 149.50,
@@ -260,7 +257,6 @@
 
 
   {
-    "id": 4,
     "nombre": "Botella térmica",
     "stock": 50,
     "precio": 19.99,
