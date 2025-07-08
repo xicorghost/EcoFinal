@@ -191,21 +191,18 @@
   Ejemplos para crear proveedores (POST):
 
 {
-    "idP": 1,
     "nombre": "Ana García",
     "correo": "ana.garcia@example.com",
     "telefono": "987-654-3210"
   }
 
   {
-    "idP": 2,
     "nombre": "Juan Pérez",
     "correo": "juan.perez@example.com",
     "telefono": "123-456-7890"
   }
 
   {
-    "idP": 3,
     "nombre": "María López",
     "correo": "maria.lopez@example.com",
     "telefono": "555-123-4567"
